@@ -1,0 +1,11 @@
+{
+  "name": "pakvista",
+  "version": "1.0.0",
+  "description": "PakVista - Pakistan Tourism Static Site",
+  "scripts": {
+    "build": "mkdir -p dist && cp *.html dist/ && parcel build style.css --dist-dir dist"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  }
+}

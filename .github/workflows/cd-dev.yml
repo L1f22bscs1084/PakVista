@@ -1,0 +1,20 @@
+# Author: Moeez - CD Development Pipeline
+name: CD - Development
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  cd-dev:
+    runs-on: ubuntu-latest
+    environment: development
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Render - Development
+        run: |
+          curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK_DEV_URL }}"
+          echo "Deployment triggered for Development environment on Render"

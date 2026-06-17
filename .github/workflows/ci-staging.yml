@@ -1,0 +1,44 @@
+# Author: Moeez - CI Staging Pipeline
+name: CI - Staging
+
+on:
+  pull_request:
+    branches:
+      - staging
+
+jobs:
+  ci-staging:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Lint HTML
+        run: |
+          npm install -g htmlhint
+          htmlhint --config .htmlhintrc "*.html"
+
+      - name: Lint CSS
+        run: |
+          npm install -g stylelint stylelint-config-standard
+          stylelint "*.css"
+
+      - name: Build with Parcel
+        run: |
+          npm install
+          npm run build
+
+      - name: Docker Login
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/pakvista:staging-latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/pakvista:staging-${{ github.sha }}
