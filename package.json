@@ -6,6 +6,8 @@
     "build": "mkdir -p dist && cp *.html dist/ && parcel build style.css --dist-dir dist"
   },
   "devDependencies": {
-    "parcel": "^2.16.4"
+    "parcel": "^2.16.4",
+    "stylelint": "^16.18.0",
+    "stylelint-config-standard": "^38.0.0"
   }
 }
