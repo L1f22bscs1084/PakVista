@@ -1,5 +1,6 @@
-# Author: Moeez - CD Production Pipeline
-name: CD - Production
+# PakVista CI/CD — UCP DevOps Fundamentals Spring 2026
+# Author: Moeez (L1f22bscs1084) — Team Lead
+name: PakVista | CD Production — Moeez (L1f22bscs1084)
 
 on:
   push:
