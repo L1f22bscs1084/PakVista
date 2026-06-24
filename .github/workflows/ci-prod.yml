@@ -1,5 +1,6 @@
-# Author: Ahmad Hassan - CI Production Pipeline
-name: CI - Production
+# PakVista CI/CD — UCP DevOps Fundamentals Spring 2026
+# Author: Ahmad Hassan — Member
+name: PakVista | CI Production — Ahmad Hassan
 
 on:
   pull_request:
